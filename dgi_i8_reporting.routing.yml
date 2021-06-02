@@ -4,10 +4,10 @@ dgi_i8_helper.migration_reports:
     _controller: 'Drupal\dgi_i8_reporting\Controller\DgiReportingController::content'
     _title: 'Islandora Migration Reports'
   requirements: 
-    _permission: 'access content'
+    _permission: 'view islandora migration reports'
 dgi_i8_helper.migration_reports.missing_media:
   path: 'admin/reports/islandora_migration_reports/missing_media'
   defaults:
     _title: 'Repository Items Missing Media'
   requirements: 
-    _permission: 'access content'
+    _permission: 'view islandora migration reports'

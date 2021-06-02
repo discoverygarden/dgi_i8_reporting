@@ -1,5 +1,5 @@
-name: 'dgi_i8_reporting'
+name: 'Islandora 8 Migration Reports'
 type: module
-description: 'Various reports for I8'
+description: 'Various reports relating to Islandora 8 migraions'
 core: 8.x
 package: 'DGI Helpers'

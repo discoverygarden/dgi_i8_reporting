@@ -8,8 +8,9 @@ dependencies:
     - node
     - search_api
     - taxonomy
+    - user
 _core:
-  default_config_hash: HOLKQFo9Gxd0-FHu9o5XZeZbGOFMmJpFCwDguu0nGgI
+  default_config_hash: 06aG4on6ez1-va1nSA5PcPSeH7htr8QkqqTcJR8SVTw
 id: dgi_islandora_reports
 label: 'DGI Islandora Reports'
 module: views
@@ -25,8 +26,9 @@ display:
     position: 0
     display_options:
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'view islandora migration reports'
       cache:
         type: none
         options: {  }
@@ -253,6 +255,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       cacheable: false
       max-age: -1
       tags: {  }
@@ -1116,6 +1119,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
+        - user.permissions
       cacheable: false
       max-age: -1
       tags:
