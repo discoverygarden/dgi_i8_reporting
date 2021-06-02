@@ -1,6 +1,7 @@
 dgi_i8_helper.migration_reports:
   path: 'admin/reports/islandora_migration_reports'
   defaults:
+    _controller: 'Drupal\dgi_i8_reporting\Controller\DgiReportingController::content'
     _title: 'Islandora Migration Reports'
   requirements: 
     _permission: 'access content'
