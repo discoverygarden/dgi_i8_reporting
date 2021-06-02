@@ -767,7 +767,7 @@ display:
             min: ''
             max: ''
             value: 'http://pcdm.org/use#OriginalFile'
-          group: 2
+          group: 1
           exposed: false
           expose:
             operator_id: field_media_external_uri_op
@@ -814,7 +814,7 @@ display:
             min: ''
             max: ''
             value: 'http://pcdm.org/use#ExtractedText'
-          group: 2
+          group: 1
           exposed: false
           expose:
             operator_id: field_media_external_uri_1_op
@@ -864,7 +864,7 @@ display:
             min: ''
             max: ''
             value: 'http://pcdm.org/use#IntermediateFile'
-          group: 2
+          group: 1
           exposed: false
           expose:
             operator_id: field_media_external_uri_2_op
@@ -908,7 +908,7 @@ display:
             min: ''
             max: ''
             value: 'http://pcdm.org/use#PreservationMasterFile'
-          group: 2
+          group: 1
           exposed: false
           expose:
             operator_id: field_media_external_uri_3_op
@@ -952,7 +952,7 @@ display:
             min: ''
             max: ''
             value: 'http://pcdm.org/use#ServiceFile'
-          group: 2
+          group: 1
           exposed: false
           expose:
             operator_id: field_media_external_uri_4_op
@@ -996,7 +996,7 @@ display:
             min: ''
             max: ''
             value: 'http://pcdm.org/use#ThumbnailImage'
-          group: 2
+          group: 1
           exposed: false
           expose:
             operator_id: field_media_external_uri_5_op
@@ -1040,7 +1040,7 @@ display:
             min: ''
             max: ''
             value: 'http://pcdm.org/use#Transcript'
-          group: 2
+          group: 1
           exposed: false
           expose:
             operator_id: field_media_external_uri_6_op
@@ -1076,7 +1076,6 @@ display:
         operator: AND
         groups:
           1: AND
-          2: AND
       arguments: {  }
       header:
         result:
