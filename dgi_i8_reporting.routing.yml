@@ -1,0 +1,12 @@
+dgi_i8_helper.migration_reports:
+  path: 'admin/reports/islandora_migration_reports'
+  defaults:
+    _title: 'Islandora Migration Reports'
+  requirements: 
+    _permission: 'access content'
+dgi_i8_helper.migration_reports.missing_media:
+  path: 'admin/reports/islandora_migration_reports/missing_media
+  defaults:
+    _title: 'Repository Items Missing Media'
+  requirements: 
+    _permission: 'access content'

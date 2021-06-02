@@ -1,0 +1,5 @@
+name: 'dgi_i8_reporting'
+type: module
+description: 'Various reports for I8'
+core: 8.x
+package: 'DGI Helpers'

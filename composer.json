@@ -1,0 +1,13 @@
+{
+  "name": "dgi_i8_reporting",
+  "type": "drupal-module",
+  "description": "Various reports for I8",
+  "keywords": [
+  ],
+  "homepage": "https://www.drupal.org/project/dgi_i8_reporting",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/dgi_i8_reporting",
+    "source": "http://cgit.drupalcode.org/dgi_i8_reporting"
+  }
+}

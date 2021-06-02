@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains dgi_i8_reporting.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function dgi_i8_reporting_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dgi_i8_reporting module.
+    case 'help.page.dgi_i8_reporting':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Various reports for I8') . '</p>';
+      return $output;
+
+    default:
+  }
+}
