@@ -23,7 +23,7 @@ class DgiReportingController extends ControllerBase {
       '#items' => [
         [
           '#markup' => Link::createFromRoute(
-            'Repository Items Missing Media',
+            'Repository Items without Media',
             'dgi_i8_helper.migration_reports.missing_media'
           )->toString(),
           '#wrapper_attributes' => [

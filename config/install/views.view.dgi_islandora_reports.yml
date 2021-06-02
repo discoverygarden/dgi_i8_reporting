@@ -262,7 +262,7 @@ display:
   page_2:
     display_plugin: page
     id: page_2
-    display_title: 'Repository Items Missing Media'
+    display_title: 'Repository Items without Media'
     position: 1
     display_options:
       display_extenders: {  }
@@ -324,6 +324,7 @@ display:
         footer: false
         sorts: false
         relationships: false
+        title: false
       row:
         type: fields
         options:
@@ -1114,6 +1115,7 @@ display:
           skip_access: false
           entity_type: media
           plugin_id: search_api
+      title: 'Repository Items without Media'
     cache_metadata:
       contexts:
         - 'languages:language_content'
