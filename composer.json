@@ -1,13 +1,7 @@
 {
-  "name": "dgi_i8_reporting",
+  "name": "discoverygarden/dgi_i8_reporting",
   "type": "drupal-module",
+  "license": "GPL-3.0-only",
   "description": "Various reports for I8",
-  "keywords": [
-  ],
-  "homepage": "https://www.drupal.org/project/dgi_i8_reporting",
-  "minimum-stability": "dev",
-  "support": {
-    "issues": "https://www.drupal.org/project/issues/dgi_i8_reporting",
-    "source": "http://cgit.drupalcode.org/dgi_i8_reporting"
-  }
+  "minimum-stability": "dev"
 }
