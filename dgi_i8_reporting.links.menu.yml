@@ -1,0 +1,6 @@
+dgi_i8_reporting.reports:
+  title: 'Islandora Migration Reports'
+  description: 'Islandora Migration Reports'
+  route_name: dgi_i8_helper.migration_reports
+  parent: system.admin_reports
+  weight: 100

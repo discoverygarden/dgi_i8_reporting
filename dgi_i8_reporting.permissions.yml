@@ -1,0 +1,4 @@
+view islandora migration reports:
+  title: 'View Islandora Migration Reports'
+  description: 'View Migration related reports.'
+  restrict access: true
