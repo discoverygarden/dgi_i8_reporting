@@ -10,7 +10,7 @@ dependencies:
     - taxonomy
     - user
 _core:
-  default_config_hash: 06aG4on6ez1-va1nSA5PcPSeH7htr8QkqqTcJR8SVTw
+  default_config_hash: DH0_A92yJPdR2No0sUZOdWUq_mlnc3Is_JX0GVPg3xQ
 id: dgi_islandora_reports
 label: 'DGI Islandora Reports'
 module: views
@@ -825,29 +825,29 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: search_api_string
-        field_media_external_uri:
-          id: field_media_external_uri
+        field_model_1:
+          id: field_model_1
           table: search_api_index_default_solr_index
-          field: field_media_external_uri
+          field: field_model
           relationship: none
           group_type: group
-          admin_label: 'Does not have Original File'
+          admin_label: 'Model (not type)'
           operator: '!='
           value:
             min: ''
             max: ''
-            value: 'http://pcdm.org/use#OriginalFile'
+            value: 'Paged Content'
           group: 1
           exposed: false
           expose:
-            operator_id: field_media_external_uri_op
-            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            operator_id: field_model_1_op
+            label: 'Model » Taxonomy term » Name'
             description: null
             use_operator: false
-            operator: field_media_external_uri_op
+            operator: field_model_1_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_media_external_uri
+            identifier: field_model_1
             required: false
             remember: false
             multiple: false
@@ -858,19 +858,60 @@ display:
             max_placeholder: null
           is_grouped: false
           group_info:
-            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
-            description: null
-            identifier: field_media_external_uri
+            label: ''
+            description: ''
+            identifier: ''
             optional: true
             widget: select
             multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
-            group_items:
-              1: {  }
-              2: {  }
-              3: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_model_2:
+          id: field_model_2
+          table: search_api_index_default_solr_index
+          field: field_model
+          relationship: none
+          group_type: group
+          admin_label: 'Model (not type)'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'Publication Issue'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
           plugin_id: search_api_string
         field_media_external_uri_1:
           id: field_media_external_uri_1
@@ -1141,6 +1182,53 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri:
+          id: field_media_external_uri
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Original File'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#OriginalFile'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            identifier: field_media_external_uri
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
           plugin_id: search_api_string
       filter_groups:
         operator: AND
