@@ -27,6 +27,10 @@ further information.
 Navigate to `admin/reports/islandora_migration_reports` and select the report
 you wish to view.
 
+### Views included
+* Repository Items without Media
+  * Shows a list of nodes that do not have media.
+
 ## Troubleshooting/Issues
 
 Having problems or solved one? contact
