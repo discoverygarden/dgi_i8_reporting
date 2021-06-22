@@ -3,5 +3,8 @@
   "type": "drupal-module",
   "license": "GPL-3.0-only",
   "description": "Various reports for I8",
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "require": {
+      "islandora/islandora": "^1"
+  }
 }
