@@ -639,7 +639,7 @@ display:
       path: admin/reports/islandora_migration_reports/missing_media
       menu:
         type: normal
-        title: 'This is a test'
+        title: 'Missing Media'
         description: ''
         expanded: false
         parent: dgi_i8_reporting.reports
