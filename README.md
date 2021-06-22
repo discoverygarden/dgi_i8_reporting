@@ -9,7 +9,6 @@ This module provides migration reports relating to Islandora 8 repository items.
 This module requires the following modules/libraries:
 
 * [Islandora](https://github.com/Islandora/islandora)
-* [Search API](https://www.drupal.org/project/search_api)
 
 ## Installation
 
@@ -19,8 +18,8 @@ further information.
 
 ## Configuration
 
-* The Solr field `search_api_reverse_entity_references_media__field_media_of:field_media_use:entity:field_external_uri` should be added to the search API's default index fields. It should have the machine name `field_media_external_uri`.
-* The permission `view islandora migration reports` would need to be added appropriately.
+* The permission `view islandora migration reports` would need to be given to
+  users who require access.
 
 ## Usage
 
