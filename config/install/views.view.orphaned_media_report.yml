@@ -14,6 +14,9 @@ dependencies:
     - user
     - views_autocomplete_filters
     - views_bulk_operations
+  enforced:
+    module:
+      - dgi_i8_reporting
 id: orphaned_media_report
 label: 'Orphaned Media Report'
 module: views

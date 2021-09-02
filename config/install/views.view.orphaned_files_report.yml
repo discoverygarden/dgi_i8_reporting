@@ -6,6 +6,9 @@ dependencies:
     - user
     - views_autocomplete_filters
     - views_bulk_operations
+  enforced:
+    module:
+      - dgi_i8_reporting
 id: orphaned_files_report
 label: 'Orphaned Files Report'
 module: views
