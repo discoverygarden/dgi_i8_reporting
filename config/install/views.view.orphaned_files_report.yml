@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies:
+  config:
+    - system.menu.admin
   module:
     - file
     - user
@@ -1003,7 +1005,7 @@ display:
       display_description: ''
       menu:
         type: normal
-        title: 'Orphaned Files Report'
+        title: 'Orphaned Files'
         description: 'A table listing all orphaned files.'
         expanded: false
         parent: dgi_i8_reporting.reports

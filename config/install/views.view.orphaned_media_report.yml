@@ -932,7 +932,7 @@ display:
       display_description: ''
       menu:
         type: normal
-        title: 'Orphaned Media Report'
+        title: 'Orphaned Media'
         description: 'A table listing all orphaned media.'
         expanded: false
         parent: dgi_i8_reporting.reports
