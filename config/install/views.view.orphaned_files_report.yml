@@ -1001,7 +1001,7 @@ display:
       display_extenders: {  }
       path: admin/reports/islandora_migration_reports/orphaned_files
       display_description: ''
-    menu:
+      menu:
         type: normal
         title: 'Orphaned Files Report'
         description: 'A table listing all orphaned files.'
