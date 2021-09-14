@@ -32,6 +32,28 @@ class DgiReportingController extends ControllerBase {
             ],
           ],
         ],
+        [
+          '#markup' => Link::createFromRoute(
+            'Orphaned Files',
+            'dgi_i8_helper.migration_reports.orphaned_files'
+          )->toString(),
+          '#wrapper_attributes' => [
+            'class' => [
+              'wrapper__links__link',
+            ],
+          ],
+        ],
+        [
+          '#markup' => Link::createFromRoute(
+            'Orphaned Media',
+            'dgi_i8_helper.migration_reports.orphaned_media'
+          )->toString(),
+          '#wrapper_attributes' => [
+            'class' => [
+              'wrapper__links__link',
+            ],
+          ],
+        ],
       ],
     ];
 
