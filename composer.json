@@ -5,6 +5,6 @@
   "description": "Various reports for I8",
   "minimum-stability": "dev",
   "require": {
-      "islandora/islandora": "^1"
+      "islandora/islandora": "^1 || ^2"
   }
 }
