@@ -11,6 +11,12 @@ dgi_i8_helper.migration_reports.missing_media:
     _title: 'Repository Items Missing Media'
   requirements:
     _permission: 'view islandora migration reports'
+dgi_i8_helper.migration_reports.missing_derivatives:
+  path: 'admin/reports/islandora_migration_reports/missing_derivatives'
+  defaults:
+    _title: 'Repository Items Missing Derivatives'
+  requirements:
+    _permission: 'view islandora migration reports'
 dgi_i8_helper.migration_reports.orphaned_files:
   path: 'admin/reports/islandora_migration_reports/orphaned_files'
   defaults:

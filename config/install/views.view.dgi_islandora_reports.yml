@@ -1,25 +1,26 @@
+uuid: 8242a103-5c13-4f03-80fd-0b0a708c82dd
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_member_of
-    - field.storage.node.field_model
-    - node.type.islandora_object
+    - search_api.index.default_solr_index
     - system.menu.admin
   module:
-    - media
     - node
+    - search_api
     - taxonomy
     - user
+    - views_bulk_operations
 _core:
-  default_config_hash: Gx1kxSmYWG87NlIeUAH_LP-yyM12b708YfRr3JY5Er0
+  default_config_hash: 3VToWmoGuFnv1iSaC-_4vqT_gdsxKK3_YJO0vItp7ik
 id: dgi_islandora_reports
 label: 'DGI Islandora Reports'
 module: views
-description: 'Reports to do with the content of the Islandora repository'
+description: 'A search page preconfigured to search through the content of your site'
 tag: ''
-base_table: node_field_data
-base_field: nid
+base_table: search_api_index_default_solr_index
+base_field: search_api_id
 display:
   default:
     display_plugin: default
@@ -32,16 +33,14 @@ display:
         options:
           perm: 'view islandora migration reports'
       cache:
-        type: tag
+        type: none
         options: {  }
       query:
-        type: views_query
+        type: search_api_query
         options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
+          skip_access: false
+          bypass_access: false
+          preserve_facet_query_args: true
       exposed_form:
         type: basic
         options:
@@ -55,20 +54,20 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 15
+          items_per_page: 100
           offset: 0
           id: 0
           total_pages: null
           tags:
-            previous: ‹‹
-            next: ››
-            first: «
-            last: »
+            previous: '‹ '
+            next: ' ›'
+            first: '« '
+            last: ' »'
           expose:
             items_per_page: true
             items_per_page_label: Results
             items_per_page_options: '15, 25, 50, 100'
-            items_per_page_options_all: true
+            items_per_page_options_all: false
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
@@ -78,7 +77,217 @@ display:
         options:
           grouping: {  }
           row_class: ''
-          default_row_class: true
+          default_row_class: false
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            title: title
+            field_resource_type: field_resource_type
+            nid: nid
+            nid_1: nid_1
+          info:
+            title:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_resource_type:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nid:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nid_1:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      filters:
+        type:
+          id: type
+          table: search_api_index_default_solr_index
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            islandora_object: islandora_object
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: search_api_options
+      sorts: {  }
+      title: 'Islandora Migration Reports'
+      header: {  }
+      footer: {  }
+      empty: {  }
+      relationships: {  }
+      arguments:
+        nid_1:
+          id: nid_1
+          table: search_api_index_default_solr_index
+          field: nid_1
+          plugin_id: search_api
+      display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      use_ajax: true
+      fields:
+        title:
+          id: title
+          table: search_api_datasource_default_solr_index_entity_node
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: '| TITLE'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: false
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: true
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+          entity_type: node
+          plugin_id: search_api_field
+    cache_metadata:
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      cacheable: false
+      max-age: -1
+      tags:
+        - 'config:search_api.index.default_solr_index'
+  page_1:
+    display_plugin: page
+    id: page_1
+    display_title: 'Repository Items without Media'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: admin/reports/islandora_migration_reports/missing_derivatives
+      exposed_block: false
+      menu:
+        type: normal
+        title: 'Repository Items without Derivatives'
+        description: ''
+        expanded: false
+        parent: dgi_i8_reporting.reports
+        weight: 0
+        context: '0'
+        menu_name: admin
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
           override: true
           sticky: true
           caption: ''
@@ -86,27 +295,17 @@ display:
           description: ''
           columns:
             nid: nid
-            title: title
-            field_model: field_model
+            title_1: title_1
             field_member_of: field_member_of
             created: created
           info:
             nid:
-              sortable: false
-              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            title:
+            title_1:
               sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_model:
-              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
@@ -118,20 +317,41 @@ display:
               empty_column: false
               responsive: ''
             created:
-              sortable: false
-              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
           default: '-1'
-          empty_table: true
+          empty_table: false
+      defaults:
+        style: false
+        row: false
+        css_class: false
+        fields: false
+        filters: false
+        filter_groups: false
+        exposed_form: false
+        header: false
+        cache: false
+        arguments: false
+        use_ajax: false
+        footer: false
+        sorts: false
+        relationships: false
+        title: false
       row:
         type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      display_description: ''
+      css_class: 'solr-search-content--list solr-search-content'
       fields:
         nid:
           id: nid
-          table: node_field_data
+          table: search_api_datasource_default_solr_index_entity_node
           field: nid
           relationship: none
           group_type: group
@@ -192,17 +412,34 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          field_rendering: false
+          fallback_handler: search_api_numeric
+          fallback_options:
+            set_precision: false
+            precision: 0
+            decimal: .
+            separator: ','
+            format_plural: false
+            format_plural_string: !!binary MQNAY291bnQ=
+            prefix: ''
+            suffix: ''
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+            format_plural_values:
+              - '1'
+              - '@count'
           entity_type: node
-          entity_field: nid
-          plugin_id: field
-        title:
-          id: title
-          table: node_field_data
+          plugin_id: search_api_field
+        title_1:
+          id: title_1
+          table: search_api_index_default_solr_index
           field: title
           relationship: none
           group_type: group
           admin_label: ''
-          label: Title
+          label: TITLE
           exclude: false
           alter:
             alter_text: false
@@ -257,17 +494,22 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+          plugin_id: search_api_field
         field_model:
           id: field_model
-          table: node__field_model
+          table: search_api_index_default_solr_index
           field: field_model
           relationship: none
           group_type: group
           admin_label: ''
-          label: Model
+          label: MODEL
           exclude: false
           alter:
             alter_text: false
@@ -308,11 +550,11 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
+          click_sort_column: value
+          type: string
           settings:
-            link: true
-          group_column: target_id
+            link_to_entity: false
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -322,15 +564,22 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+          plugin_id: search_api_field
         field_member_of:
           id: field_member_of
-          table: node__field_member_of
+          table: search_api_datasource_default_solr_index_entity_node
           field: field_member_of
           relationship: none
           group_type: group
           admin_label: ''
-          label: Collection(s)
+          label: COLLECTION(S)
           exclude: false
           alter:
             alter_text: false
@@ -385,15 +634,39 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
+          field_rendering: true
+          fallback_handler: search_api_entity
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+            display_methods:
+              about:
+                display_method: label
+                view_mode: default
+              article:
+                display_method: label
+                view_mode: default
+              block_display:
+                display_method: label
+                view_mode: default
+              islandora_object:
+                display_method: label
+                view_mode: default
+              page:
+                display_method: label
+                view_mode: default
+          entity_type: node
+          plugin_id: search_api_field
         created:
           id: created
-          table: node_field_data
+          table: search_api_datasource_default_solr_index_entity_node
           field: created
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Date Ingested'
+          label: 'DATE INGESTED'
           exclude: false
           alter:
             alter_text: false
@@ -437,7 +710,7 @@ display:
           click_sort_column: value
           type: timestamp
           settings:
-            date_format: medium
+            date_format: short
             custom_date_format: ''
             timezone: ''
           group_column: value
@@ -450,18 +723,124 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api_date
+          fallback_options:
+            date_format: fallback
+            custom_date_format: ''
+            timezone: ''
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
           entity_type: node
-          entity_field: created
-          plugin_id: field
+          plugin_id: search_api_field
+        views_bulk_operations_bulk_form:
+          id: views_bulk_operations_bulk_form
+          table: views
+          field: views_bulk_operations_bulk_form
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          batch: true
+          batch_size: 10
+          form_step: true
+          buttons: false
+          clear_on_exposed: true
+          action_title: Action
+          selected_actions:
+            2:
+              action_id: generate_derivative_file
+              preconfiguration:
+                add_confirmation: false
+            5:
+              action_id: generate_audio_derivative
+              preconfiguration:
+                add_confirmation: false
+            6:
+              action_id: generate_image_derivative
+              preconfiguration:
+                add_confirmation: false
+            7:
+              action_id: generate_image_derivative_file
+              preconfiguration:
+                add_confirmation: false
+            8:
+              action_id: generate_ocr_derivative
+              preconfiguration:
+                add_confirmation: false
+            9:
+              action_id: generate_extracted_text_file
+              preconfiguration:
+                add_confirmation: false
+            10:
+              action_id: generate_video_derivative
+              preconfiguration:
+                add_confirmation: false
+          force_selection_info: false
+          plugin_id: views_bulk_operations_bulk_form
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Search
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      cache:
+        type: none
       filters:
         type:
           id: type
-          table: node_field_data
+          table: search_api_index_default_solr_index
           field: type
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
+          operator: or
           value:
             islandora_object: islandora_object
           group: 1
@@ -472,8 +851,6 @@ display:
             description: ''
             use_operator: false
             operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
             identifier: ''
             required: false
             remember: false
@@ -481,6 +858,8 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -493,21 +872,387 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-        field_media_of_target_id:
-          id: field_media_of_target_id
-          table: media__field_media_of
-          field: field_media_of_target_id
-          relationship: reverse__media__field_media_of
+          reduce_duplicates: false
+          plugin_id: search_api_options
+        field_model:
+          id: field_model
+          table: search_api_index_default_solr_index
+          field: field_model
+          relationship: none
           group_type: group
-          admin_label: ''
-          operator: empty
+          admin_label: 'Model (not type)'
+          operator: '!='
           value:
             min: ''
             max: ''
-            value: ''
+            value: Collection
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_model_op
+            label: 'is not equal to'
+            description: ''
+            use_operator: false
+            operator: field_model_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: not_type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              editor: '0'
+              ingester: '0'
+              repository_administrator: '0'
+              site_administrator: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_1:
+          id: field_media_external_uri_1
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Extracted Text'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#ExtractedText'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_1_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: ''
+            use_operator: false
+            operator: field_media_external_uri_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              editor: '0'
+              ingester: '0'
+              repository_administrator: '0'
+              site_administrator: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_2:
+          id: field_media_external_uri_2
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Intermediate File'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#IntermediateFile'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_2_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_2_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_2
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_3:
+          id: field_media_external_uri_3
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Preservation Master File'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#PreservationMasterFile'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_3_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_3_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_3
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_4:
+          id: field_media_external_uri_4
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Service File'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#ServiceFile'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_4_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_4_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_4
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_5:
+          id: field_media_external_uri_5
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Thumbnail Image'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#ThumbnailImage'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_5_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_5_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_5
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_6:
+          id: field_media_external_uri_6
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Transcript'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#Transcript'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_6_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_6_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_6
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri:
+          id: field_media_external_uri
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Has Original File'
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#OriginalFile'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            identifier: field_media_external_uri
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+          plugin_id: search_api_string
+        field_model_1:
+          id: field_model_1
+          table: search_api_index_default_solr_index
+          field: field_model
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'Paged Content'
           group: 1
           exposed: false
           expose:
@@ -539,16 +1284,19 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: numeric
-        field_external_uri_uri:
-          id: field_external_uri_uri
-          table: taxonomy_term__field_external_uri
-          field: field_external_uri_uri
-          relationship: field_model
+          plugin_id: search_api_string
+        field_model_2:
+          id: field_model_2
+          table: search_api_index_default_solr_index
+          field: field_model
+          relationship: none
           group_type: group
           admin_label: ''
           operator: '!='
-          value: 'http://purl.org/dc/dcmitype/Collection'
+          value:
+            min: ''
+            max: ''
+            value: 'Compound Object'
           group: 1
           exposed: false
           expose:
@@ -566,6 +1314,8 @@ display:
             remember_roles:
               authenticated: authenticated
             placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -578,9 +1328,12 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: string
-      sorts: {  }
-      title: 'Repository Items without Media'
+          plugin_id: search_api_string
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      arguments: {  }
       header:
         result:
           id: result
@@ -592,51 +1345,56 @@ display:
           empty: true
           content: '<div class="result-count">@total <span class="result-text-content">Result<span class="plural-@total">s</span></span></div>'
           plugin_id: result
+      use_ajax: false
       footer: {  }
-      empty: {  }
+      sorts: {  }
       relationships:
-        reverse__media__field_media_of:
-          id: reverse__media__field_media_of
-          table: node_field_data
-          field: reverse__media__field_media_of
+        field_media_of:
+          id: field_media_of
+          table: search_api_datasource_default_solr_index_entity_media
+          field: field_media_of
           relationship: none
           group_type: group
-          admin_label: field_media_of
+          admin_label: 'Media of: Content'
           required: false
-          entity_type: node
-          plugin_id: entity_reverse
-        field_model:
-          id: field_model
-          table: node__field_model
-          field: field_model
+          skip_access: false
+          entity_type: media
+          plugin_id: search_api
+        field_media_use:
+          id: field_media_use
+          table: search_api_datasource_default_solr_index_entity_media
+          field: field_media_use
           relationship: none
           group_type: group
-          admin_label: 'field_model: Taxonomy term'
+          admin_label: 'Media Use: Taxonomy term'
           required: false
-          plugin_id: standard
-      arguments: {  }
-      display_extenders: {  }
+          skip_access: false
+          entity_type: media
+          plugin_id: search_api
+      title: 'Repository Items without Derivatives'
     cache_metadata:
-      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
+      cacheable: false
+      max-age: 0
       tags:
         - 'config:field.storage.node.field_member_of'
-        - 'config:field.storage.node.field_model'
+        - 'config:search_api.index.default_solr_index'
         - env
         - extensions
-  page_1:
+  page_2:
     display_plugin: page
-    id: page_1
+    id: page_2
     display_title: 'Repository Items without Media'
     position: 1
     display_options:
       display_extenders: {  }
       path: admin/reports/islandora_migration_reports/missing_media
+      exposed_block: false
       menu:
         type: normal
         title: 'Missing Media'
@@ -646,17 +1404,935 @@ display:
         weight: 0
         context: '0'
         menu_name: admin
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
+          override: true
+          sticky: true
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            nid: nid
+            title_1: title_1
+            field_member_of: field_member_of
+            created: created
+          info:
+            nid:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            title_1:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_member_of:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            created:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
+      defaults:
+        style: false
+        row: false
+        css_class: false
+        fields: false
+        filters: false
+        filter_groups: false
+        exposed_form: false
+        header: false
+        cache: false
+        arguments: false
+        use_ajax: false
+        footer: false
+        sorts: false
+        relationships: false
+        title: false
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
       display_description: ''
+      css_class: 'solr-search-content--list solr-search-content'
+      fields:
+        nid:
+          id: nid
+          table: search_api_datasource_default_solr_index_entity_node
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ID
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: false
+          fallback_handler: search_api_numeric
+          fallback_options:
+            set_precision: false
+            precision: 0
+            decimal: .
+            separator: ','
+            format_plural: false
+            format_plural_string: !!binary MQNAY291bnQ=
+            prefix: ''
+            suffix: ''
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+            format_plural_values:
+              - '1'
+              - '@count'
+          entity_type: node
+          plugin_id: search_api_field
+        title_1:
+          id: title_1
+          table: search_api_index_default_solr_index
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: TITLE
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+          plugin_id: search_api_field
+        field_model:
+          id: field_model
+          table: search_api_index_default_solr_index
+          field: field_model
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: MODEL
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+          plugin_id: search_api_field
+        field_member_of:
+          id: field_member_of
+          table: search_api_datasource_default_solr_index_entity_node
+          field: field_member_of
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: COLLECTION(S)
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api_entity
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+            display_methods:
+              about:
+                display_method: label
+                view_mode: default
+              article:
+                display_method: label
+                view_mode: default
+              block_display:
+                display_method: label
+                view_mode: default
+              islandora_object:
+                display_method: label
+                view_mode: default
+              page:
+                display_method: label
+                view_mode: default
+          entity_type: node
+          plugin_id: search_api_field
+        created:
+          id: created
+          table: search_api_datasource_default_solr_index_entity_node
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'DATE INGESTED'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp
+          settings:
+            date_format: short
+            custom_date_format: ''
+            timezone: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api_date
+          fallback_options:
+            date_format: fallback
+            custom_date_format: ''
+            timezone: ''
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+          entity_type: node
+          plugin_id: search_api_field
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Search
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      cache:
+        type: none
+      filters:
+        type:
+          id: type
+          table: search_api_index_default_solr_index
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            islandora_object: islandora_object
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: search_api_options
+        field_model:
+          id: field_model
+          table: search_api_index_default_solr_index
+          field: field_model
+          relationship: none
+          group_type: group
+          admin_label: 'Model (not type)'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: Collection
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_model_op
+            label: 'is not equal to'
+            description: ''
+            use_operator: false
+            operator: field_model_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: not_type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              editor: '0'
+              ingester: '0'
+              repository_administrator: '0'
+              site_administrator: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_1:
+          id: field_media_external_uri_1
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Extracted Text'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#ExtractedText'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_1_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: ''
+            use_operator: false
+            operator: field_media_external_uri_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              editor: '0'
+              ingester: '0'
+              repository_administrator: '0'
+              site_administrator: '0'
+              administrator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_2:
+          id: field_media_external_uri_2
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Intermediate File'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#IntermediateFile'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_2_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_2_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_2
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_3:
+          id: field_media_external_uri_3
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Preservation Master File'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#PreservationMasterFile'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_3_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_3_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_3
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_4:
+          id: field_media_external_uri_4
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Service File'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#ServiceFile'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_4_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_4_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_4
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_5:
+          id: field_media_external_uri_5
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Thumbnail Image'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#ThumbnailImage'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_5_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_5_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_5
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri_6:
+          id: field_media_external_uri_6
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Transcript'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#Transcript'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_6_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_6_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri_6
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_string
+        field_media_external_uri:
+          id: field_media_external_uri
+          table: search_api_index_default_solr_index
+          field: field_media_external_uri
+          relationship: none
+          group_type: group
+          admin_label: 'Does not have Original File'
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: 'http://pcdm.org/use#OriginalFile'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_media_external_uri_op
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            use_operator: false
+            operator: field_media_external_uri_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_media_external_uri
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: false
+          group_info:
+            label: 'Reverse reference: Media using Media of » Media Use » Taxonomy term » External URI'
+            description: null
+            identifier: field_media_external_uri
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+          plugin_id: search_api_string
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      arguments: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          content: '<div class="result-count">@total <span class="result-text-content">Result<span class="plural-@total">s</span></span></div>'
+          plugin_id: result
+      use_ajax: false
+      footer: {  }
+      sorts: {  }
+      relationships:
+        field_media_of:
+          id: field_media_of
+          table: search_api_datasource_default_solr_index_entity_media
+          field: field_media_of
+          relationship: none
+          group_type: group
+          admin_label: 'Media of: Content'
+          required: false
+          skip_access: false
+          entity_type: media
+          plugin_id: search_api
+        field_media_use:
+          id: field_media_use
+          table: search_api_datasource_default_solr_index_entity_media
+          field: field_media_use
+          relationship: none
+          group_type: group
+          admin_label: 'Media Use: Taxonomy term'
+          required: false
+          skip_access: false
+          entity_type: media
+          plugin_id: search_api
+      title: 'Repository Items without Media'
     cache_metadata:
-      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
+      cacheable: false
+      max-age: -1
       tags:
         - 'config:field.storage.node.field_member_of'
-        - 'config:field.storage.node.field_model'
+        - 'config:search_api.index.default_solr_index'
         - env
         - extensions
+

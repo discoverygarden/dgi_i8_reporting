@@ -34,6 +34,17 @@ class DgiReportingController extends ControllerBase {
         ],
         [
           '#markup' => Link::createFromRoute(
+            'Repository Items without Derivatives',
+            'dgi_i8_helper.migration_reports.missing_derivatives'
+          )->toString(),
+          '#wrapper_attributes' => [
+            'class' => [
+              'wrapper__links__link',
+            ]
+          ],
+        ],
+        [
+          '#markup' => Link::createFromRoute(
             'Orphaned Files',
             'dgi_i8_helper.migration_reports.orphaned_files'
           )->toString(),
