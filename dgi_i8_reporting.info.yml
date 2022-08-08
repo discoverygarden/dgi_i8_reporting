@@ -4,4 +4,4 @@ description: 'Various reports relating to Islandora 8 migrations'
 core_version_requirement: ^8 || ^9
 package: 'DGI Helpers'
 dependencies:
-  - islandora
+  - islandora:islandora
