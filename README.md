@@ -1,3 +1,4 @@
+
 # Modern Islandora Migration Reports
 
 ![](https://github.com/discoverygarden/dgi_i8_reporting/actions/workflows/auto-lint.yml/badge.svg)
@@ -5,6 +6,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Introduction
+
 This module provides migration reports regarding Modern Islandora repository items.
 
 ## Table of Contents
@@ -28,7 +30,7 @@ This module requires the following modules/libraries:
 ## Installation
 
 Install as usual, see
-[this](https://drupal.org/documentation/install/modules-themes/modules-8) for
+[this](https://www.drupal.org/docs/extending-drupal/installing-modules) for
 further information.
 
 ## Configuration

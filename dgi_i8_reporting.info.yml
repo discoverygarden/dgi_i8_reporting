@@ -1,7 +1,7 @@
-name: 'Islandora 8 Migration Reports'
+name: 'Islandora Migration Reports'
 type: module
-description: 'Various reports relating to Islandora 8 migrations'
-core_version_requirement: ^8 || ^9
+description: 'Various reports relating to Islandora migrations'
+core_version_requirement: ^9 || ^10
 package: 'DGI Helpers'
 dependencies:
   - islandora:islandora
