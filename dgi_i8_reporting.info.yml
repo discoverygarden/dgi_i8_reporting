@@ -1,7 +1,7 @@
 name: 'Islandora Migration Reports'
 type: module
 description: 'Various reports relating to Islandora migrations'
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^10 || ^11
 package: 'DGI Helpers'
 dependencies:
   - islandora:islandora
